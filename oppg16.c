@@ -23,10 +23,6 @@
 • skriver ut alle de ti innleste bokstavene
 */
 
-//Lag konster minverdi og maxverdi - inter
-// disse er 1 og 10000
-//Sikre at alle verdiene er mellom constene MINVERDI og MAXVERDI
-
 const int MINVERDI = 1;
 const int MAXVERDI = 10000;
 const int ANTALLTALL = 5;
@@ -45,55 +41,51 @@ const int ANTALLCHARS = 10;
 */
 int main(void) 
 {
-int intArray[ANTALLTALL];
 
+// Les inn tall fra bruker og legg de inn i array
+int intArray[ANTALLTALL];
 for (int i = 0; i < ANTALLTALL; i++)
 {
     printf("Skriv inn et tall mellom %d og %d -> ", MINVERDI, MAXVERDI);
     scanf("%d", &intArray[i]);
-    // if (!isdigit(intArray[i]))
-    // {
-    //     printf("Skriv et tall din knoll");
-    // }
+    getchar();
+
     if (intArray[i] < MINVERDI || intArray[i] > MAXVERDI)
     {
         printf("Tall ikke innenfor verdiene! \n");
     }
+} 
+
+// Spør om charer sombruker skal skrive ut og les de inn i array. 
+// Dersom det blir skrevet inn noe som ikke er char så prøv igj
+char inputChars[512];
+for (int i = 0; i < ANTALLCHARS; i++)
+{
+    printf("Skriv inn char nr %d du vil lagre: ", i);
+    scanf("%c", &inputChars[i]);
+    getchar();
+
+    inputChars[i] = toupper(inputChars[i]);
+    if (!isalpha(inputChars[i]))
+    {
+        printf("IKKE BOKSTAV! PRØV IGJEN!\n");
+        i--;
+    }
+    
 }
 
 // Skriv ut alle innleste tall
-/** for i = 0, i < 5
- *  printf scanarray[i]
-*/
 printf("Tallene du skrev inn var: ");
 for (int i = 0; i < ANTALLTALL; i++)
 {
-    printf("%d", intArray[i]);
+    printf("%d\n", intArray[i]);
 }
 printf("\n");
 
-
-
-// Les inn ti tegn og (ett og ett) i en char array
-//gjor alle om til stor bokstav
-// Sjekk at alle er bokstaver (isalpha)
-/**
- * char chararray[50];
- * for i = 0, i < 10
- * scanf char[i]
- * char[i] to upper
- * 
- * if char[i] !isalpha
- *  printf ikke bokstav
- * 
-*/
-
-
-
 // skriv ut alle 10 innleste bokstavene
-/**
- * for i = 0, i < 10
- * printf chararray[i]
-*/
+for (int i = 0; i < ANTALLCHARS; i++) 
+{
+    printf("%c \n", inputChars[i]);
+}
 
 }
